@@ -38,8 +38,22 @@
         }
     ],
     "configurations": [
+         {
+            "name": "运行 (run)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
+            ],
+            "cwd": "${workspaceFolder}/samples/${input:pickProject}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+        },
         {
-            "name": "运行选中的项目",
+            "name": "运行 (dll)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-selected-project",
