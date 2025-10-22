@@ -1,0 +1,59 @@
+{
+    "version": "0.2.0",
+    "inputs": [
+        {
+            "id": "pickProject",
+            "description": "选择要运行的项目",
+            "default": "HelloWorldWindow",
+            "type": "pickString",
+            "options": [
+                "HelloWorldWindow",
+                "HelloWorldLabel",
+                "ButtonHandler",
+                "ButtonColors",
+                "DrawSquareLines",
+                "DrawSquareBetter",
+                "Chex",
+                "DockMenu",
+                "GridWindow",
+                "Harmonograph",
+                "ImageProcessing",
+                "ImageProcessingEmbed",
+                "ImageRotation",
+                "MultiThreading",
+                "MultiWindowGraphics",
+                "MultiWindowCancelToken",
+                "OpenFile",
+                "Particles",
+                "PlaySound",
+                "ShowIcon",
+                "SlidersProgress",
+                "Spirograph",
+                "StackOfLabels",
+                "Starrs",
+                "TextBoxWindow",
+                "UndoDotsWithoutUndo",
+                "UndoDotsWithUndo"
+            ]
+        }
+    ],
+    "configurations": [
+        {
+            "name": "运行选中的项目",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-selected-project",
+            "program": "${workspaceFolder}/samples/${input:pickProject}/bin/Debug/net9.0/${input:pickProject}.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/samples/${input:pickProject}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+        },
+        {
+            "name": "Attach to Process",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}

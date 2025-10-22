@@ -1,0 +1,157 @@
+{
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "pickProject",
+            "description": "选择要构建的项目",
+            "default": "HelloWorldWindow",
+            "type": "pickString",
+            "options": [
+                "HelloWorldWindow",
+                "HelloWorldLabel",
+                "ButtonHandler",
+                "ButtonColors",
+                "DrawSquareLines",
+                "DrawSquareBetter",
+                "Chex",
+                "DockMenu",
+                "GridWindow",
+                "Harmonograph",
+                "ImageProcessing",
+                "ImageProcessingEmbed",
+                "ImageRotation",
+                "MultiThreading",
+                "MultiWindowGraphics",
+                "MultiWindowCancelToken",
+                "OpenFile",
+                "Particles",
+                "PlaySound",
+                "ShowIcon",
+                "SlidersProgress",
+                "Spirograph",
+                "StackOfLabels",
+                "Starrs",
+                "TextBoxWindow",
+                "UndoDotsWithoutUndo",
+                "UndoDotsWithUndo"
+            ]
+        },
+    ],
+    "tasks": [
+        {
+            "label": "build-selected-project",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run-selected-project",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch-selected-project",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "isBackground": true
+        },
+        {
+            "label": "clean-selected-project",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "clean",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        // {
+        //     "label": "create-net9-project",
+        //     "command": "dotnet",
+        //     "type": "process",
+        //     "args": [
+        //         "new",
+        //         "console",
+        //         "-n",
+        //         "HelloWorldWindow.Net9",
+        //         "-f",
+        //         "net9.0",
+        //         "-o",
+        //         "${workspaceFolder}/samples/HelloWorldWindow"
+        //     ],
+        //     "problemMatcher": "$msCompile"
+        // },
+        {
+            "label": "make-build",
+            "command": "make",
+            "type": "process",
+            "args": [
+                "build"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "make-run",
+            "command": "make",
+            "type": "process",
+            "args": [
+                "run"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "make-watch",
+            "command": "make",
+            "type": "process",
+            "args": [
+                "watch"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "isBackground": true
+        },
+        {
+            "label": "make-clean",
+            "command": "make",
+            "type": "process",
+            "args": [
+                "clean"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "make-list-projects",
+            "command": "make",
+            "type": "process",
+            "args": [
+                "list-projects"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
