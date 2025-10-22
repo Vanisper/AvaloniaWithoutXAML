@@ -38,12 +38,27 @@
         }
     ],
     "configurations": [
-         {
+        {
             "name": "运行 (run)",
             "type": "coreclr",
             "request": "launch",
             "program": "dotnet",
             "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
+            ],
+            "cwd": "${workspaceFolder}/samples/${input:pickProject}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+        },
+        {
+            "name": "运行 (watch)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "watch",
                 "run",
                 "--project",
                 "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
