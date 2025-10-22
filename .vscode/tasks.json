@@ -129,12 +129,10 @@
                 "--output",
                 "${workspaceFolder}/publish/${input:pickProject}-singlefile-${input:pickRuntime}",
                 "/p:PublishSingleFile=true",
-                "/p:SelfContained=true",
+                "/p:SelfContained=true", // 独立运行，内置dotnet
                 "/p:PublishTrimmed=true", // 裁减大小
                 "--runtime",
                 "${input:pickRuntime}",
-                "--self-contained", // 独立运行，不依赖 net
-                "true",
             ],
             "problemMatcher": "$msCompile"
         },
