@@ -36,6 +36,21 @@
                 "UndoDotsWithUndo"
             ]
         },
+        {
+            "id": "pickRuntime",
+            "description": "选择目标运行时",
+            "default": "win-x64",
+            "type": "pickString",
+            "options": [
+                "win-x64",
+                "win-x86",
+                "win-arm64",
+                "linux-x64",
+                "linux-arm64",
+                "osx-x64",
+                "osx-arm64"
+            ]
+        }
     ],
     "tasks": [
         {
@@ -85,6 +100,38 @@
             "args": [
                 "clean",
                 "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-selected-project",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj",
+                "--configuration",
+                "Release",
+                "--output",
+                "${workspaceFolder}/publish/${input:pickProject}"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-selected-project-single-file",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/samples/${input:pickProject}/${input:pickProject}.csproj",
+                "--configuration",
+                "Release",
+                "--output",
+                "${workspaceFolder}/publish/${input:pickProject}-singlefile-${input:pickRuntime}",
+                "/p:PublishSingleFile=true",
+                "/p:SelfContained=true",
+                "--runtime",
+                "${input:pickRuntime}"
             ],
             "problemMatcher": "$msCompile"
         },
