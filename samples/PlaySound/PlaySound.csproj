@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <Nullable>enable</Nullable>
+    <PublishAot>true</PublishAot>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!--支持在Windows XP或更高版本的Windows操作系统上运行-->
+    <WindowsSupportedOSPlatformVersion>5.1</WindowsSupportedOSPlatformVersion>
+    <RuntimeIdentifier>win;win-x86;win-x64;win-arm;win-arm64</RuntimeIdentifier>
+    <TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +18,8 @@
     <PackageReference Include="Avalonia.Desktop" Version="11.1.0" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0" />
     <PackageReference Include="SoundFlow" Version="1.2.1" />
+    <PackageReference Include="VC-LTL" Version="5.2.2" />
+    <PackageReference Include="YY-Thunks" Version="1.1.8" />
   </ItemGroup>
 
   <ItemGroup>
