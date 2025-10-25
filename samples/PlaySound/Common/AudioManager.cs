@@ -41,8 +41,7 @@ namespace PlaySound.Common
             if (_isInitialized)
                 return true;
 
-            if (audioStream == null)
-                throw new ArgumentNullException(nameof(audioStream));
+            ArgumentNullException.ThrowIfNull(audioStream);
 
             try
             {
